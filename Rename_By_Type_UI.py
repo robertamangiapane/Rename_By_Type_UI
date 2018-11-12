@@ -14,8 +14,8 @@ def CreateWindow(windowName):
 
 def RenameByTypeUI():
 
-    editedWindow = CreateWindow("Rename By Type")
-    cmds.window(editedWindow, edit=True, title="Rename By Type", widthHeight=(300, 100))
+    editedWindow = CreateWindow("Rename_By_Type")
+    cmds.window(editedWindow, edit=True, title="Rename_By_Type", widthHeight=(300, 100))
     cmds.rowColumnLayout(nr=2, cat=(1, "both", 10), rs=(1, 10), rat=(1, "both", 10), ral=(1, "center"))
     cmds.text(label="You have to select at least ONE object to rename!")
     cmds.button(label="Rename", width=270, c=GetObjType)
@@ -64,6 +64,9 @@ def GetObjType(*args):
             suffix = "grp"
 
         cmds.rename(i,(i+"_"+suffix))
+
+    global mainWindow
+    cmds.deleteUI(mainWindow)
 
 
 
